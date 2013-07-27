@@ -17,6 +17,6 @@ def user_hi(username):
 def redirect(request):
     return request
 
-#@app.route('/script/<word>')
-#def redirect(word):
-#    return fs.doubleword(word)
+@app.route('/doubleword/<word>')
+def dubdirect(word):
+    return fs.doubleword(word)
