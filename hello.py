@@ -2,6 +2,7 @@ import os, sys
 sys.path.insert(0, './translate_logic') # add translation logic
 import first_script as fs
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
