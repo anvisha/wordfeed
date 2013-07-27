@@ -1,12 +1,10 @@
-import os
+import os, sys
+sys.path.insert(0, './translate_logic') # add translation logic
+import first_script as fs
 from flask import Flask
 from flask import request
 
 app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 @app.route('/hello')
 def hello():
@@ -19,3 +17,7 @@ def user_hi(username):
 @app.route('/redirect/<request>')
 def redirect(request):
     return request
+
+@app.route('/doubleword/<word>')
+def dubdirect(word):
+    return fs.doubleword(word)
