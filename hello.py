@@ -11,3 +11,6 @@ def hello():
 def user_hi(username):
     return "hi "+ username
 
+@app.route('/redirect/<request>')
+def redirect(request):
+    return request
