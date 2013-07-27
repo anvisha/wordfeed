@@ -1,0 +1,5 @@
+This folder should contain the Python logic required to:
+
+1) Generate a set of words from a location
+2) Translate these words from English to French
+3) Output a set of location-EN-FR tuples
