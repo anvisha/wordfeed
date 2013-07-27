@@ -1,11 +1,8 @@
 import os
+import translate-logic.first-script as translate
 from flask import Flask
 
 app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 @app.route('/hello')
 def hello():
@@ -18,3 +15,7 @@ def user_hi(username):
 @app.route('/redirect/<request>')
 def redirect(request):
     return request
+
+@app.route('/script/<word>')
+def redirect(word):
+    return translate.doubleword(word)
