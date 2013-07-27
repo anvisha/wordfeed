@@ -1,5 +1,6 @@
-import os
-import translate-logic.first-script as translate
+import os, sys
+sys.path.insert(0, './translate_logic') # add translation logic
+import first_script as fs
 from flask import Flask
 
 app = Flask(__name__)
@@ -18,4 +19,4 @@ def redirect(request):
 
 @app.route('/script/<word>')
 def redirect(word):
-    return translate.doubleword(word)
+    return fs.doubleword(word)
