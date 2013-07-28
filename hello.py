@@ -1,6 +1,6 @@
 import os, sys
 sys.path.insert(0, './translate_logic') # add translation logic
-import first_script as fs
+import foursquare as fs
 from flask import Flask
 from flask import request
 
@@ -20,11 +20,12 @@ def user_hi(username):
 def redirect(request):
     return request
 
-@app.route('/doubleword/<word>')
-def dubdirect(word):
-    return fs.doubleword(word)
-
 @app.route('/foursquare_push', methods= ['POST'])
 def push():
     if request.method == 'POST':
         return request.data
+
+@app.route('/translate_from_id/<id>')
+def excuse_my_french():
+    phraseBank = fs.get_words_from_id(id)
+    return fs.translate_random(phraseBank)
