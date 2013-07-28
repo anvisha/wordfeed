@@ -48,7 +48,7 @@ def parse_foursquare_push(j):
     #fieldDict['categories'] = catList
     #fieldDict['name'] = response['venue']['name']
     #return fieldDict, user_id
-    return type(response)
+    return str(type(response))
 
 # Used for hello.py: ID demo
 def get_words_from_id(id):
