@@ -42,10 +42,10 @@ def get_fields(id):
 
 def parse_foursquare_push(j):
     fieldDict = {}
-    cats = json.loads(j)['venue']['categories']
-    # may not be ENTIRELY accurate: test if this works with multiple categories
-    fieldDict['categories'] = [cat['name'] for cat in cats]
-    fieldDict['name'] = json.loads(j)['venue']['name']
+    categories = json.loads(j)['response']['venue']['categories']
+    catList = [x['name'] for x in categories]
+    fieldDict['categories'] = catList
+    fieldDict['name'] = json.loads(j)['response']['venue']['name']
     return fieldDict
 
 def get_words_from_id(id):

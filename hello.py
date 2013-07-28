@@ -31,8 +31,6 @@ def push():
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
 
-        
-
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
     fieldDict = fs.get_fields(id)
