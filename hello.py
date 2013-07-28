@@ -27,15 +27,14 @@ def redirect():
 @app.route('/foursquare_push', methods= ['POST'])
 def push():
     if request.method == 'POST':
-        #jsonPost = request.data
-        #field_dict, user_id = fs.parse_foursquare_push(jsonPost) # parsed from foursquare json
-        #phraseBank = fs.get_words_from_cats(field_dict['categories'])
-        #en, fr = fs.translate_random(phraseBank)
-        #name = fieldDict['name']
-        #data = {"english": en, "translation": fr, "place":name, "service":"foursquare"}
+        field_dict, user_id = fs.parse_foursquare_push(request.data) # parsed from foursquare json
+        phraseBank = fs.get_words_from_cats(field_dict['categories'])
+        en, fr = fs.translate_random(phraseBank)
+        name = fieldDict['name']
+        data = {"english": en, "translation": fr, "place":name, "service":"foursquare"}
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
-        json = request.data
+        son = request.data
         ddata = json['text']
         data = {"alert" : data}
         pc.send_push(user_id, data) 
