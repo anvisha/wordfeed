@@ -17,8 +17,8 @@ def user_hi(username):
     return "hi "+ username
 
 @app.route('/redirect')
-def redirect(request):
-    return "Hello!"
+def redirect():
+    return "Hey! Through some twist of fate, you've landed on our redirect page. Sorry about that."XS
 
 @app.route('/foursquare_push', methods= ['POST'])
 def push():
