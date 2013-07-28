@@ -42,9 +42,10 @@ def send_push(device_id, data):
 def send_data(device_id, data):
     connection = httplib.HTTPSConnection('api.parse.com', 443)
     connection.connect()
-    connection.request('POST', '/1/classes/GameScore', json.dumps({
+    connection.request('POST', '/1/classes/classInfo', json.dumps({
+       "device_id": device_id,
        "english": data["english"],
-       "translated": data["translated"],
+       "translation": data["translation"],
        "place": data["place"]
      }), {
        "X-Parse-Application-Id": "gEbXwcPJ2XufJJMMdHia73TQmaJIC3kFC02Dyb1k",

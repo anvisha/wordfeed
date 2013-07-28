@@ -49,7 +49,7 @@ def parse_foursquare_push(j):
     en, fr = translate_random(words)
     place = response['venue']['name']
     phrase = "English: "+en+" and French: "+fr+"at "+place
-    data = {"english": en, "french": fr, "place": place}
+    data = {"english": en, "translation": fr, "place": place}
     #fieldDict['categories'] = catList
     #fieldDict['name'] = response['venue']['name']
     return user_id, data
