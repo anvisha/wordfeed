@@ -24,17 +24,20 @@ def user_hi(username):
 def redirect():
     return "Hey! Through some twist of fate, you've landed on our redirect page. Sorry about that. Try closing the app and opening it back up again."
 
-@app.route('/foursquare_push', methods= ['POST'])
+@app.route('/foursquare_push', methods= ['GET', 'POST'])
 def push():
-    if request.method == 'POST':
-        jsonPost = request.data
-        field_dict, user_id = fs.parse_foursquare_push(jsonPost) # parsed from foursquare json
-        phraseBank = fs.get_words_from_cats(field_dict['categories'])
-        en, fr = fs.translate_random(phraseBank)
-        name = fieldDict['name']
-        data = {"english": en, "translation": fr, place:"name", service:"foursquare"}
+    if request.method == 'POST' or request.method == 'GET':
+        #jsonPost = request.data
+        #field_dict, user_id = fs.parse_foursquare_push(jsonPost) # parsed from foursquare json
+        #phraseBank = fs.get_words_from_cats(field_dict['categories'])
+        #en, fr = fs.translate_random(phraseBank)
+        #name = fieldDict['name']
+        ##data = {"english": en, "translation": fr, place:"name", service:"foursquare"}
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
+        json = request.data
+        ddata = json['text']
+        data = {"alert" : data}
         pc.send_push(user_id, data) 
 
 @app.route('/translate_from_id/<id>')

@@ -24,6 +24,7 @@ def get_device_id(foursquare_id):
     connection.request('GET', '/1/classes/foursquareUser?%s' % params, '', {
                "X-Parse-Application-Id": PARSE_APP_ID, "X-Parse-REST-API-Key": PARSE_API_KEY})
     result = json.loads(connection.getresponse().read())
+    #return result
     return result['results'][0]['deviceId']
 
 def send_push(device_id, data):
