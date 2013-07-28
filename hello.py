@@ -28,8 +28,8 @@ def redirect():
 def push():
     if request.method == 'POST':
         fieldDict, user_id = fs.parse_foursquare_push(request.form['checkin']) # parsed from foursquare json
-        phraseBank = fs.get_words_from_cats(field_dict['categories'])
-        en, fr = fs.translate_random(phraseBank)
+        #phraseBank = fs.get_words_from_cats(field_dict['categories'])
+        #en, fr = fs.translate_random(phraseBank)
         name = fieldDict['name']
         #data = {"english": en, "translation": fr, "place":name, "service":"foursquare"}
         # Add Parse push logic here
