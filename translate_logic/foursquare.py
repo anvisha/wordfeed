@@ -52,7 +52,7 @@ def parse_foursquare_push(j):
     data = {"english": en, "french": "blah", "place": place}
     #fieldDict['categories'] = catList
     #fieldDict['name'] = response['venue']['name']
-    return user_id, {"alert":data}
+    return user_id, {"alert":phrase}
     
 # Used for hello.py: ID demo
 def get_words_from_id(id):
