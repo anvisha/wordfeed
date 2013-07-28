@@ -22,7 +22,7 @@ def user_hi(username):
 
 @app.route('/redirect')
 def redirect():
-    return "Hey! Through some twist of fate, you've landed on our redirect page. Sorry about that. Try closing the app and opening it back up again."
+    return "Congratulations! You've authenticated successfully."
 
 @app.route('/foursquare_push', methods= ['GET', 'POST'])
 def push():
