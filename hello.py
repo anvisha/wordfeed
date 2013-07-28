@@ -27,6 +27,8 @@ def push():
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
-    phraseBank = fs.get_words_from_id(id)
+    fieldDict = fs.get_fields(id)
+    phraseBank = fs.get_words_from_cats(fieldDict['categories'])
     en, fr = fs.translate_random(phraseBank)
-    return "English: " + en + "<br>French: " + fr
+    name = fieldDict['name']
+    return "Thanks for checking in at " + name + "!<br>English: " + en + "<br>French: " + fr
