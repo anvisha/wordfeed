@@ -6,9 +6,9 @@ PARSE_API_KEY = "vWIpooIeyVh4fDkUwpmaRTmrbGeSPTlU4OA5me59"
 PARSE_APP_ID = "gEbXwcPJ2XufJJMMdHia73TQmaJIC3kFC02Dyb1k"
 
 
-def push_to_phone(foursquare_id, data):
+def push_to_phone(foursquare_id, data, phrase):
     device_id = get_device_id(foursquare_id)
-    send_push(device_id, data)
+    send_push(device_id, phrase)
     send_data(device_id, data)
 
 def get_device_id(foursquare_id):
@@ -22,10 +22,10 @@ def get_device_id(foursquare_id):
     #return result
     return result['results'][0]['deviceId']
 
-def send_push(device_id, data):
+def send_push(device_id, push_notif):
     connection = httplib.HTTPSConnection('api.parse.com', 443)
     connection.connect()
-    push_notif = data["english"] + " is " + data["translation"] + " in French!" 
+    #push_notif = data["english"] + " is " + data["translation"] + " in French!" 
     connection.request('POST', '/1/push', json.dumps({
                "channels": ["user_"+device_id],
                 "data": {"alert" : push_notif}}), {"X-Parse-Application-Id": PARSE_APP_ID,
