@@ -42,12 +42,11 @@ def get_fields(id):
 
 def parse_foursquare_push(j):
     fieldDict = {}
-    response = json.loads(j)['response']
-    user_id = response['user']['id']
+    user_id = json.loads(j)['user']['id']
     categories = response['venue']['categories']
     catList = [x['name'] for x in categories]
     fieldDict['categories'] = catList
-    fieldDict['name'] = json.loads(j)['response']['venue']['name']
+    fieldDict['name'] = json.loads(j)['venue']['name']
     return fieldDict, user_id
 
 # Used for hello.py: ID demo
