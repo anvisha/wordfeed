@@ -33,7 +33,7 @@ def send_push(device_id, data):
     connection.connect()
     connection.request('POST', '/1/push', json.dumps({
                "channels": ["user_"+device_id],
-                "data": {"alert" : data}), {"X-Parse-Application-Id": PARSE_APP_ID,
+                "data": {"alert" : data}}), {"X-Parse-Application-Id": PARSE_APP_ID,
                 "X-Parse-REST-API-Key": PARSE_API_KEY,
                "Content-Type": "application/json"})
     result = json.loads(connection.getresponse().read())

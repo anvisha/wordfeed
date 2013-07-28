@@ -67,5 +67,8 @@ def translate_random(words):
     while(true):
         enPhrase = random.choice(words)
         frPhrase = translate.naiveTranslate(enPhrase)
-        try str(frPhrase):
+        try:
             return (enPhrase, str(frPhrase))
+        except:
+            continue
+
