@@ -3,6 +3,7 @@ sys.path.insert(0, './translate_logic') # add translation logic
 import foursquare as fs
 from flask import Flask
 from flask import request
+import parse_connect as pc
 
 ADMINS = ['anvisha@gmail.com']
 PARSE_URL = "https://api.parse.com/1/classes/foursquareUsers/"
@@ -31,12 +32,10 @@ def push():
         phraseBank = fs.get_words_from_cats(field_dict['categories'])
         en, fr = fs.translate_random(phraseBank)
         name = fieldDict['name']
+        data = {"english": en, "translation": fr, place:"name", service:"foursquare"}
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
-        params = {"X-Parse-Application-Id" :"${"+PARSE_APP_ID+"}",
-        "X-Parse-REST-API-Key": "${"+PARSE_API_KEY+"}"}
-        r = requests.get(PARSE_URL+user_id, params)
-
+        pc.send_push(user_id, data} 
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
