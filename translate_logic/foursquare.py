@@ -50,12 +50,14 @@ def parse_foursquare_push(j):
     fieldDict['name'] = json.loads(j)['response']['venue']['name']
     return fieldDict, user_id
 
+# Used for hello.py: ID demo
 def get_words_from_id(id):
     cats = get_categories(id)
-    return gw.get_english_words_from_cats(cats)
+    return translate.get_english_words_from_cats(cats)
 
+# Used for hello.py: PUSH request
 def get_words_from_cats(cats):
-    return gw.get_english_words_from_cats(cats)
+    return translate.get_english_words_from_cats(cats)
 
 def translate_random(words):
     enPhrase = random.choice(words)
