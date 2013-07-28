@@ -6,8 +6,8 @@ from flask import request
 
 ADMINS = ['anvisha@gmail.com']
 PARSE_URL = "https://api.parse.com/1/classes/foursquareUsers/"
-PARSE_API_KEY = ""
-PARSE_APP_ID = ""
+PARSE_API_KEY = "vWIpooIeyVh4fDkUwpmaRTmrbGeSPTlU4OA5me59"
+PARSE_APP_ID = "gEbXwcPJ2XufJJMMdHia73TQmaJIC3kFC02Dyb1k"
 
 app = Flask(__name__)
 
@@ -33,7 +33,10 @@ def push():
         name = fieldDict['name']
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
-        r = requests.get(
+        params = {"X-Parse-Application-Id" :"${"+PARSE_APP_ID+"}",
+        "X-Parse-REST-API-Key": "${"+PARSE_API_KEY+"}"}
+        r = requests.get(PARSE_URL+user_id, params)
+
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
