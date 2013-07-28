@@ -25,6 +25,6 @@ def dubdirect(word):
     return fs.doubleword(word)
 
 @app.route('/foursquare_push', methods= ['POST'])
-def push(push_notif):
+def push():
     if request.method == 'POST':
         return request.data
