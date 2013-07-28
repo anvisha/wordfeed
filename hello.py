@@ -10,15 +10,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hi! This is Anvisha, Max, Daesun and Ranna's Greylock Hackfest Project. Let's learn new languages on the go!"
+    return "Hi! Let's learn languages on the go."
 
 @app.route('/user/<username>')
 def user_hi(username):
     return "hi "+ username
 
-@app.route('/redirect/<request>')
-def redirect(request):
-    return request
+@app.route('/redirect')
+def redirect():
+    return "Hey! Through some twist of fate, you've landed on our redirect page. Sorry about that."
 
 @app.route('/foursquare_push', methods= ['POST'])
 def push():
@@ -27,6 +27,8 @@ def push():
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
-    phraseBank = fs.get_words_from_id(id)
+    fieldDict = fs.get_fields(id)
+    phraseBank = fs.get_words_from_cats(fieldDict['categories'])
     en, fr = fs.translate_random(phraseBank)
-    return "English: " + en + "<br>French: " + fr
+    name = fieldDict['name']
+    return "Thanks for checking in at " + name + "!<br>English: " + en + "<br>French: " + fr
