@@ -39,7 +39,7 @@ def push():
         #son = request.data
         #ddata = json['text']
         #data = {"alert" : data}
-        pc.push_to_phone(user_id, {"alert": user_id}) 
+        pc.push_to_phone(user_id, response) 
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):

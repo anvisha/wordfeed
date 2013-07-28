@@ -43,11 +43,15 @@ def get_fields(id):
 def parse_foursquare_push(j):
     response = json.loads(j)
     user_id = response['user']['id']
-    #categories = response['venue']['categories']
-    #catList = [x['name'] for x in categories]
+    categories = response['venue']['categories']
+    catList = [x['name'] for x in categories]
+    words = translate.get_english_words_from_cats(catList)
+    en, fr = translate_random(words)
+    place = response['venue']['name']
+    data = {"english": en, "french": "blah", "place": place}
     #fieldDict['categories'] = catList
     #fieldDict['name'] = response['venue']['name']
-    return user_id, user_id
+    return user_id, data
     
 # Used for hello.py: ID demo
 def get_words_from_id(id):
