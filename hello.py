@@ -26,7 +26,7 @@ def push():
         return request.data
 
 @app.route('/translate_from_id/<id>')
-def excuse_my_french():
+def excuse_my_french(id):
     phraseBank = fs.get_words_from_id(id)
     en, fr = fs.translate_random(phraseBank)
     return "English: " + en + "; French: " + fr
