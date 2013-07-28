@@ -27,20 +27,19 @@ def redirect():
 @app.route('/foursquare_push', methods= ['POST'])
 def push():
     if request.method == 'POST':
-        user_id = fs.parse_foursquare_push(request.form['checkin'])
+        user_id, response = fs.parse_foursquare_push(request.form['checkin'])
         # fieldDict, user_id = fs.parse_foursquare_push(request.form['checkin']) # parsed from foursquare json
         
         #phraseBank = fs.get_words_from_cats(field_dict['categories'])
         #en, fr = fs.translate_random(phraseBank)
         #name = fieldDict['name']
-        name = "name"
         #data = {"english": en, "translation": fr, "place":name, "service":"foursquare"}
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
         #son = request.data
         #ddata = json['text']
         #data = {"alert" : data}
-        pc.push_to_phone(user_id, {"alert": name}) 
+        pc.push_to_phone(user_id, {"alert": user_id}) 
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
