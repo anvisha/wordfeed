@@ -15,7 +15,7 @@ def get_device_id():
 def push_to_phone(foursquare_id, data):
     device_id = get_device_id(foursquare_id)
     send_push(device_id, data)
-    send_data(device_id, data)
+    #send_data(device_id, data)
 
 def get_device_id(foursquare_id):
     connection = httplib.HTTPSConnection('api.parse.com', 443)
@@ -33,7 +33,7 @@ def send_push(device_id, data):
     connection.connect()
     connection.request('POST', '/1/push', json.dumps({
                "channels": ["user_"+device_id],
-                "data": data}), {"X-Parse-Application-Id": PARSE_APP_ID,
+                "data": {"action": "com.greylock.RENDER_CARD"}), {"X-Parse-Application-Id": PARSE_APP_ID,
                 "X-Parse-REST-API-Key": PARSE_API_KEY,
                "Content-Type": "application/json"})
     result = json.loads(connection.getresponse().read())
