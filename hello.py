@@ -27,10 +27,4 @@ def dubdirect(word):
 @app.route('/foursquare_push', methods= ['POST'])
 def push(push_notif):
     if request.method == 'POST':
-        import logging
-        from logging.handlers import SMTPHandler
-        mail_handler = SMTPHandler('http://dry-plateau-8291.herokuapp.com/',
-                                    'anvisha@gmail.com',
-                                    ADMINS, request.data)
-        app.logger.addHandler(mail_handler)
-        
+        return request.data
