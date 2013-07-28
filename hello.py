@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hi! This is Anvisha, Max, Daesun and Ranna's Greylock Hackfest Project. Let's learn new languages on the go!"
+    return "Hi! Let's learn languages on the go."
 
 @app.route('/user/<username>')
 def user_hi(username):
@@ -18,7 +18,7 @@ def user_hi(username):
 
 @app.route('/redirect')
 def redirect():
-    return "Hey! Through some twist of fate, you've landed on our redirect page. Sorry about that."XS
+    return "Hey! Through some twist of fate, you've landed on our redirect page. Sorry about that."
 
 @app.route('/foursquare_push', methods= ['POST'])
 def push():
