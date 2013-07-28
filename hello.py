@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hi! Let's learn new languages on the go!"
+    return "Hi! This is Anvisha, Max, Daesun and Ranna's Greylock Hackfest Project. Let's learn new languages on the go!"
 
 @app.route('/user/<username>')
 def user_hi(username):
