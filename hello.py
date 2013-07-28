@@ -5,6 +5,9 @@ from flask import Flask
 from flask import request
 
 ADMINS = ['anvisha@gmail.com']
+PARSE_URL = "https://api.parse.com/1/classes/foursquareUsers/"
+PARSE_API_KEY = ""
+PARSE_APP_ID = ""
 
 app = Flask(__name__)
 
@@ -24,12 +27,13 @@ def redirect():
 def push():
     if request.method == 'POST':
         jsonPost = request.data
-        fieldDict = fs.parse_foursquare_push(jsonPost) # parsed from foursquare json
-        phraseBank = fs.get_words_from_cats(fieldDict['categories'])
+        field_dict, user_id = fs.parse_foursquare_push(jsonPost) # parsed from foursquare json
+        phraseBank = fs.get_words_from_cats(field_dict['categories'])
         en, fr = fs.translate_random(phraseBank)
         name = fieldDict['name']
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
+        r = requests.get(
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
