@@ -16,9 +16,9 @@ def hello():
 def user_hi(username):
     return "hi "+ username
 
-@app.route('/redirect/<request>')
+@app.route('/redirect')
 def redirect(request):
-    return request
+    return "Hello!"
 
 @app.route('/foursquare_push', methods= ['POST'])
 def push():
