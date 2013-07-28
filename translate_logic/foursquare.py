@@ -13,13 +13,8 @@ def get_categories(id):
     url = "https://api.foursquare.com/v2/venues/" + id + "?" + COMBO_KEY
     r = requests.get(url)
     if r.status_code == requests.codes.ok:
-        #parsed = r['json']
-        try:
-            categories = r.json['response']['venue']['categories']
-            return [x['name'] for x in categories]
-        except:
-            categories = r.json['response']['venue']['categories']
-            return [x['name'] for x in categories]
+        categories = r.json()['response']['venue']['categories']
+        return [x['name'] for x in categories]
     else:
         return "bad response"
 
