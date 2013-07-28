@@ -47,8 +47,9 @@ def parse_foursquare_push(j):
     catList = [x['name'] for x in categories]
     words = translate.get_english_words_from_cats(catList)
     en, fr = translate_random(words)
+    nafr = translate.strip_accent(fr)
     place = response['venue']['name']
-    phrase = "English: "+en+" and French: hi at "+place
+    phrase = "English: "+en+" and French: "+nafr+" at "+place
     data = {"english": en, "translation": fr, "place": place}
     #fieldDict['categories'] = catList
     #fieldDict['name'] = response['venue']['name']

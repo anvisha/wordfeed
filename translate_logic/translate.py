@@ -33,7 +33,24 @@ def naiveTranslate(engPhrase):
     frenchWord = translation['translations'][0]['translatedText']
     return frenchWord
 
-def noAccentTranslate(engPhrase):
+def strip_accent(frenchWord):
+    recons = ""
+    for x in frenchWord:
+        if ord(x) > 128:
+            if ord(x) == 224:
+                recons += "a"
+            if ord(x) == 232:
+                recons += "e"
+            if ord(x) == 233:
+                recons += "e"
+            else:
+                print ord(x)
+                recons += "o"
+        else:
+            recons += x
+    return recons
+
+def no_accent_translate(engPhrase):
     service = build('translate', 'v2', developerKey=apiKey)
     translation = service.translations().list(
         source='en',
