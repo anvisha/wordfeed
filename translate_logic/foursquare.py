@@ -41,9 +41,9 @@ def get_fields(id):
         return "bad response"
 
 def parse_foursquare_push(j):
-    fieldDict = {}
     response = j.json()
     user_id = response['user']['id']
+    assert type(user_id)=='unicode'
     categories = response['venue']['categories']
     catList = [x['name'] for x in categories]
     fieldDict['categories'] = catList
