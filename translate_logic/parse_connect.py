@@ -6,7 +6,7 @@ PARSE_API_KEY = "vWIpooIeyVh4fDkUwpmaRTmrbGeSPTlU4OA5me59"
 PARSE_APP_ID = "gEbXwcPJ2XufJJMMdHia73TQmaJIC3kFC02Dyb1k"
 
 
-def push_to_phone(foursquare_id, data, phrase):
+def push_to_phone(foursquare_id, phrase):
     device_id = get_device_id(foursquare_id)
     send_push(device_id, phrase)
     #send_data(device_id, data)
