@@ -41,15 +41,14 @@ def get_fields(id):
         return "bad response"
 
 def parse_foursquare_push(j):
-    response = j.json()
-    user_id = response['user']['id']
-    categories = response['venue']['categories']
-    catList = [x['name'] for x in categories]
-    fieldDict['categories'] = catList
-    fieldDict['name'] = j.json()['venue']['name']
-    if name == u'Zeitgeist':
-        r = requests.get("http://dry-plateau-8291.herokuapp.com/redirect")
-    return fieldDict, user_id
+    #response = j.json()
+    #user_id = response['user']['id']
+    #categories = response['venue']['categories']
+    #catList = [x['name'] for x in categories]
+    #fieldDict['categories'] = catList
+    #fieldDict['name'] = j.json()['venue']['name']
+    #return fieldDict, user_id
+    return j
 
 # Used for hello.py: ID demo
 def get_words_from_id(id):
