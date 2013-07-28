@@ -41,9 +41,9 @@ def get_fields(id):
         return "bad response"
 
 def parse_foursquare_push(j):
+    
     response = j.json()
     user_id = response['user']['id']
-    print response
     categories = response['venue']['categories']
     catList = [x['name'] for x in categories]
     fieldDict['categories'] = catList
