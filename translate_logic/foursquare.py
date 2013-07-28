@@ -64,11 +64,7 @@ def get_words_from_cats(cats):
     return translate.get_english_words_from_cats(cats)
 
 def translate_random(words):
-    while(true):
-        enPhrase = random.choice(words)
-        frPhrase = translate.naiveTranslate(enPhrase)
-        try:
-            return (enPhrase, str(frPhrase))
-        except:
-            continue
+    enPhrase = random.choice(words)
+    frPhrase = translate.naiveTranslate(enPhrase)
+    return (enPhrase, str(frPhrase))
 
