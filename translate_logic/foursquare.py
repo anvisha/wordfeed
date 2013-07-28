@@ -40,6 +40,14 @@ def get_fields(id):
     else:
         return "bad response"
 
+def parse_foursquare_push(j):
+    fieldDict = {}
+    cats = json.loads(j)['venue']['categories']
+    # may not be ENTIRELY accurate: test if this works with multiple categories
+    fieldDict['categories'] = [cat['name'] for cat in cats]
+    fieldDict['name'] = json.loads(j)['venue']['name']
+    return fieldDict
+
 def get_words_from_id(id):
     cats = get_categories(id)
     return gw.get_english_words_from_cats(cats)
@@ -51,3 +59,8 @@ def translate_random(words):
     enPhrase = random.choice(words)
     frPhrase = translate.naiveTranslate(enPhrase)
     return (enPhrase, frPhrase)
+
+
+f = open('sample_push.json', 'r')
+test = f.read()
+parse_foursquare_push(test)
