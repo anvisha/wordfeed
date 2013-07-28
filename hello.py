@@ -37,7 +37,7 @@ def push():
         #son = request.data
         #ddata = json['text']
         #data = {"alert" : data}
-        pc.send_push("15511432", response) 
+        pc.send_push("15511432", {"alert": response}) 
 
 @app.route('/translate_from_id/<id>')
 def excuse_my_french(id):
