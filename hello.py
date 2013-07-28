@@ -34,9 +34,9 @@ def push():
         data = {"english": en, "translation": fr, "place":name, "service":"foursquare"}
         # Add Parse push logic here
         # You got the wheels from here, Anvisha :)
-        son = request.data
-        ddata = json['text']
-        data = {"alert" : data}
+        #son = request.data
+        #ddata = json['text']
+        #data = {"alert" : data}
         pc.send_push(user_id, data) 
 
 @app.route('/translate_from_id/<id>')

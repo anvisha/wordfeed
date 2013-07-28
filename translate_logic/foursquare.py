@@ -42,7 +42,7 @@ def get_fields(id):
 
 def parse_foursquare_push(j):
     fieldDict = {}
-    response = j.json()['response']
+    response = j.json()
     user_id = response['user']['id']
     categories = response['venue']['categories']
     catList = [x['name'] for x in categories]
