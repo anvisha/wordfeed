@@ -8,7 +8,7 @@ HARD_MAP = {'Burger Joint':['Beef', 'Tomato', 'Lettuce', 'Cheese', 'Meat is Murd
             'Coffee Shop':['Coffee', 'Decaf', 'Milk and cream', 'Caffeine', 'Coffee beans'],
             'Ice Cream Shop':['Vanilla', 'Ice cream', 'Sugar cone', 'Chocolate syrup']}
 
-GENERAL_ITEMS = ['Fork', 'Spoon', 'Knife', 'Plate', 'Waiter', 'Waitress', 'Water']
+GENERAL_ITEMS = ['Knife', 'Waitress', 'Water', 'Stove']
 
 def get_english_words_from_cats(categories):
     wordBank = []
@@ -36,3 +36,16 @@ def cacheRetrieve(engPhrase):
     # Checks if the English phrase is in the pickle
     # If not, uh, pull it and put it in :)
     pass
+
+# makes sure none of the HARD_MAP or GENERAL_ITEMS are "embarrassing"
+# an English word is embarrassing if it's equal to its French translation
+def validateNotEmbarrassing():
+    for x in HARD_MAP:
+        for word in HARD_MAP[x]:
+            if word == naiveTranslate(word):
+                print("WARNING: " + word + " is embarrassing")
+    for word in GENERAL_ITEMS:
+        if word == naiveTranslate(word):
+            print("WARNING: " + word + " is embarrassing")
+
+validateNotEmbarrassing()
