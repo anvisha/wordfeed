@@ -14,8 +14,12 @@ def get_categories(id):
     r = requests.get(url)
     if r.status_code == requests.codes.ok:
         #parsed = r['json']
-        categories = r.json['response']['venue']['categories']
-        return [x['name'] for x in categories]
+        try:
+            categories = r.json['response']['venue']['categories']
+            return [x['name'] for x in categories]
+        except:
+            categories = r.json['response']['venue']['categories']
+            return [x['name'] for x in categories]
     else:
         return "bad response"
 
