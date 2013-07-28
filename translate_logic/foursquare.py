@@ -49,10 +49,10 @@ def parse_foursquare_push(j):
     en, fr = translate_random(words)
     place = response['venue']['name']
     phrase = "English: "+en+" and French: hi at "+place
-    #data = {"english": en, "translation": fr, "place": place}
+    data = {"english": en, "translation": "hi", "place": place}
     #fieldDict['categories'] = catList
     #fieldDict['name'] = response['venue']['name']
-    return user_id, phrase
+    return user_id, phrase, data
     
 # Used for hello.py: ID demo
 def get_words_from_id(id):
