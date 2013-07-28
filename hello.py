@@ -1,9 +1,9 @@
 import os, sys
 sys.path.insert(0, './translate_logic') # add translation logic
+import parse_connect as pc
 import foursquare as fs
 from flask import Flask
 from flask import request
-import parse_connect as pc
 
 ADMINS = ['anvisha@gmail.com']
 PARSE_URL = "https://api.parse.com/1/classes/foursquareUsers/"
