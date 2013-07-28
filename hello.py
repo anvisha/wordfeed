@@ -4,9 +4,11 @@ import first_script as fs
 from flask import Flask
 from flask import request
 
+ADMINS = ['anvisha@gmail.com']
+
 app = Flask(__name__)
 
-@app.route('/hello')
+@app.route('/')
 def hello():
     return "Hi! Let's learn new languages on the go!"
 
@@ -21,3 +23,14 @@ def redirect(request):
 @app.route('/doubleword/<word>')
 def dubdirect(word):
     return fs.doubleword(word)
+
+@app.route('/foursquare_push', methods= ['POST'])
+def push(push_notif):
+    if request.method == 'POST':
+        import logging
+        from logging.handlers import SMTPHandler
+        mail_handler = SMTPHandler('http://dry-plateau-8291.herokuapp.com/',
+                                    'anvisha@gmail.com',
+                                    ADMINS, request.data)
+        app.logger.addHandler(mail_handler)
+        
