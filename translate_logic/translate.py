@@ -2,13 +2,15 @@ from apiclient.discovery import build
 
 apiKey = 'AIzaSyCXFaCTAQdC-lSSVndQGHFMkFsDShWT2rY'
 
-HARD_CATEGORIES = ['Burger Joint', 'Beer Garden', 'Coffee Shop', 'Ice Cream Shop']
+HARD_CATEGORIES = ['Burger Joint', 'Beer Garden', 'Coffee Shop', 'Ice Cream Shop', 'Movie Theater', 'Tech Startup']
 HARD_MAP = {'Burger Joint':['Beef', 'Tomato', 'Lettuce', 'Cheese', 'Meat is Murder'],
-            'Beer Garden':['Beer', 'Alcohol', 'Beer belly', 'I\'m not drunk', 'We\'re going home, Dad'],
+            'Beer Garden':['Beer', 'Alcohol', 'Beer belly', 'I\'m not drunk', 'We\'re going home, Dad', 'Do you serve vodka?'],
             'Coffee Shop':['Coffee', 'Decaf', 'Milk and cream', 'Caffeine', 'Coffee beans'],
-            'Ice Cream Shop':['Vanilla', 'Ice cream', 'Sugar cone', 'Chocolate syrup']}
+            'Ice Cream Shop':['Vanilla', 'Ice cream', 'Sugar cone', 'Chocolate syrup'],
+            'Multiplex':['Have you seen Pacific Rim?', 'Have you seen Wolverine?', 'Have you seen R.I.P.D.?', 'Buttered popcorn'],
+            'Tech Startup':['Disrupt']}
 
-GENERAL_ITEMS = ['Knife', 'Waitress', 'Water', 'Stove']
+GENERAL_ITEMS = ['Knife', 'Waitress', 'Water', 'Stove', 'The food is delicious']
 
 def get_english_words_from_cats(categories):
     wordBank = []
