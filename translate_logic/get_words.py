@@ -8,11 +8,11 @@ HARD_MAP = {'Burger Joint':['Beef', 'Tomato', 'Lettuce', 'Cheese', 'Meat is Murd
 
 GENERAL_ITEMS = ['Fork', 'Spoon', 'Knife', 'Plate', 'Waiter', 'Waitress', 'Water']
 
-def getEnglishWordsFromCategories(categories):
+def get_english_words_from_cats(categories):
     wordBank = []
     for category in categories:
         if category in HARD_CATEGORIES:
-            wordBank += HARD_CATEGORIES[category]
+            wordBank += HARD_MAP[category]
     if wordBank == []:
         wordBank += GENERAL_ITEMS
 
