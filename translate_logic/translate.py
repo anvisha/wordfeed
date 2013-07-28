@@ -10,7 +10,7 @@ def naiveTranslate(engPhrase):
         target='fr',
         q=[engPhrase]
         ).execute()
-    return translation
+    return translation['translations'][0]['translatedText']
 
 def cacheRetrieve(engPhrase):
     # Checks if the English phrase is in the pickle
