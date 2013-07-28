@@ -31,9 +31,10 @@ def get_device_id(foursquare_id):
 def send_push(device_id, data):
     connection = httplib.HTTPSConnection('api.parse.com', 443)
     connection.connect()
+    push_notif = data["english"] + " is " + data["translation"] + " in French!" 
     connection.request('POST', '/1/push', json.dumps({
                "channels": ["user_"+device_id],
-                "data": {"alert" : data}}), {"X-Parse-Application-Id": PARSE_APP_ID,
+                "data": {"alert" : push_notif}}), {"X-Parse-Application-Id": PARSE_APP_ID,
                 "X-Parse-REST-API-Key": PARSE_API_KEY,
                "Content-Type": "application/json"})
     result = json.loads(connection.getresponse().read())
@@ -42,7 +43,7 @@ def send_push(device_id, data):
 def send_data(device_id, data):
     connection = httplib.HTTPSConnection('api.parse.com', 443)
     connection.connect()
-    connection.request('POST', '/1/classes/classInfo', json.dumps({
+    connection.request('POST', '/1/classes/cardInfo', json.dumps({
        "device_id": device_id,
        "english": data["english"],
        "translation": data["translation"],
