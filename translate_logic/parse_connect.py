@@ -15,6 +15,7 @@ def get_device_id():
 def push_to_phone(foursquare_id, data):
     device_id = get_device_id(foursquare_id)
     send_push(device_id, data)
+    send_data(device_id, data)
 
 def get_device_id(foursquare_id):
     connection = httplib.HTTPSConnection('api.parse.com', 443)
@@ -35,5 +36,20 @@ def send_push(device_id, data):
                 "data": data}), {"X-Parse-Application-Id": PARSE_APP_ID,
                 "X-Parse-REST-API-Key": PARSE_API_KEY,
                "Content-Type": "application/json"})
+    result = json.loads(connection.getresponse().read())
+    return result
+
+def send_data(device_id, data):
+    connection = httplib.HTTPSConnection('api.parse.com', 443)
+    connection.connect()
+    connection.request('POST', '/1/classes/GameScore', json.dumps({
+       "english": data["english"],
+       "translated": data["translated"],
+       "place": data["place"]
+     }), {
+       "X-Parse-Application-Id": "gEbXwcPJ2XufJJMMdHia73TQmaJIC3kFC02Dyb1k",
+       "X-Parse-REST-API-Key": "vWIpooIeyVh4fDkUwpmaRTmrbGeSPTlU4OA5me59",
+       "Content-Type": "application/json"
+     })
     result = json.loads(connection.getresponse().read())
     return result
