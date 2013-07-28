@@ -63,8 +63,3 @@ def translate_random(words):
     enPhrase = random.choice(words)
     frPhrase = translate.naiveTranslate(enPhrase)
     return (enPhrase, frPhrase)
-
-
-f = open('sample_push.json', 'r')
-test = f.read()
-parse_foursquare_push(test)
